@@ -1,12 +1,10 @@
-import { useState, useEffect, useCallback } from 'react'
-import './App.css'
+import { useState, useEffect } from 'react'
 import sdk from '@farcaster/frame-sdk';
 import { Context } from '@farcaster/frame-sdk';
 
 function App() {
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
   const [context, setContext] = useState<Context.FrameContext>();
-  const [isContextOpen, setIsContextOpen] = useState(false);
 
   useEffect(() => {
     const load = async () => {
@@ -19,52 +17,46 @@ function App() {
     }
   }, [isSDKLoaded]);
 
-  const toggleContext = useCallback(() => {
-    setIsContextOpen((prev) => !prev);
-  }, []);
 
   if (!isSDKLoaded) {
-    return <div>Loading...</div>;
+    return <div className="bg-black text-white">Loading...</div>;
   }
 
   return (
-    <div style={{
-      maxWidth: "400px",
-      margin: "0 auto",
-      padding: "0 16px"
-    }}>
-      <h1>Orbiter Mini App</h1>
-
-      <div>
-        <h2>Context</h2>
-        <button
-          onClick={toggleContext}
-        >
-          <span>
-            ➤
-          </span>
-          Tap to expand
-        </button>
-
-        {isContextOpen && (
-          <div style={{
-            overflow: 'auto',
-            maxWidth: '100%'
-          }}>
-            <pre style={{
-              whiteSpace: 'pre-wrap',
-              wordWrap: 'break-word',
-              wordBreak: 'break-word',
-              overflowWrap: 'break-word',
-              maxWidth: '100%',
-              fontSize: '14px'
-            }}>
-              {JSON.stringify(context, null, 2)}
-            </pre>
+    <main className="flex flex-col min-h-screen w-full items-center justify-center gap-12 bg-black text-white">
+      <img src="/logo.svg" alt="Orbiter logo" className="max-w-[250px]" />
+      {context ? (
+        <>
+          <h3 className="text-white">Hello {context.user.displayName}!</h3>
+          <p className="text-white">FID: {context.user.fid}</p>
+          <div
+            onClick={() => sdk.actions.openUrl("https://docs.orbiter.host/miniapps")}
+            className="inline-flex items-center justify-center rounded-md font-medium text-sm leading-5 px-4 py-2 bg-white text-black cursor-pointer outline-none border border-transparent hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 active:bg-gray-300"
+          >
+            Docs
           </div>
-        )}
-      </div>
-    </div>
+        </>
+      ) : (
+        <>
+          <a
+            className="inline-flex items-center justify-center rounded-md font-medium text-sm leading-5 px-4 py-2 bg-white text-black cursor-pointer outline-none border border-transparent hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 active:bg-gray-300"
+            target='_blank'
+            rel="noopener noreferrer"
+            href="https://warpcast.com/~/developers/mini-apps/debug"
+          >
+            Farcaster Portal
+          </a>
+          <a
+            href="https://docs.orbiter.host"
+            target='_blank'
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-md font-medium text-sm leading-5 px-4 py-2 bg-white text-black cursor-pointer outline-none border border-transparent hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 active:bg-gray-300"
+          >
+            Docs
+          </a>
+        </>
+      )}
+    </main>
   )
 }
 
