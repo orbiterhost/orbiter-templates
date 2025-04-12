@@ -12,6 +12,6 @@
     "imageUrl": "https://v2demo.orbiter.website/image.png",
     "buttonTitle": "Launch",
     "splashImageUrl": "https://v2demo.orbiter.website/splash.png",
-    "splashBackgroundColor": "#ffffff"
+    "splashBackgroundColor": "#000000"
   }
 }
