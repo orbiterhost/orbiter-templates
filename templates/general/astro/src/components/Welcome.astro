@@ -1,10 +1,14 @@
 ---
-import logo from '../assets/logo.svg';
+import logo from "../assets/logo.png";
 ---
 
 <main>
   <img src={logo.src} alt="Orbiter logo" />
-  <a href="https://docs.orbiter.host" target="_blank" rel="noopener noreferrer" class="link">Docs</a>
+  <p>Get started by editing <span class="code">src/components/Welcome.astro</span></p>
+  <div class="link-container">
+    <a href="https://docs.orbiter.host" target="_blank" rel="noopener noreferrer" class="link">Docs</a>
+    <a href="https://github.com/orbiterhost" target="_blank" rel="noopener noreferrer" class="link secondary">Github</a>
+  </div>
 </main>
 
 <style>
@@ -19,7 +23,7 @@ import logo from '../assets/logo.svg';
   }
 
   img {
-    max-width: 250px;
+    max-width: 350px;
   }
 
   .link {
@@ -31,7 +35,7 @@ import logo from '../assets/logo.svg';
     font-size: 0.875rem;
     line-height: 1.25rem;
     padding: 0.5rem 1rem;
-    background-color: white;
+    background-color: #FFB757;
     color: black;
     text-decoration: none;
     transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
@@ -40,8 +44,23 @@ import logo from '../assets/logo.svg';
     border: 1px solid transparent;
   }
 
+  .link.secondary {
+    background-color: #1A191B ;
+    color: #D1D1D1;
+  }
+
+  .link.secondary:hover {
+    background-color: #232225;
+  }
+
   .link:hover {
-    background-color: #e5e5e5;
+    background-color: #F1AB4B;
+  }
+
+  .link-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 
   .link:focus-visible {
@@ -50,13 +69,11 @@ import logo from '../assets/logo.svg';
     box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
   }
 
-  .link:active {
-    background-color: #d4d4d4;
+  .code {
+    font-family: monospace;
+    background: #232323;
+    padding: 0.5rem;
+    border-radius: 5px;
   }
 
-  .link:disabled,
-  .link[aria-disabled="true"] {
-    opacity: 0.5;
-    pointer-events: none;
-  }
 </style>
