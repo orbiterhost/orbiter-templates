@@ -1,0 +1,17 @@
+{
+	"accountAssociation": {
+		"header": "",
+		"payload": "",
+		"signature": ""
+	},
+	"frame": {
+		"version": "1",
+		"name": "Orbiter Demo",
+		"iconUrl": "https://v2demo.orbiter.website/icon.png",
+		"homeUrl": "https://v2demo.orbiter.website",
+		"imageUrl": "https://v2demo.orbiter.website/image.png",
+		"buttonTitle": "Launch",
+		"splashImageUrl": "https://v2demo.orbiter.website/splash.png",
+		"splashBackgroundColor": "#000000"
+	}
+}
