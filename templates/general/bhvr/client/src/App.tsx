@@ -9,7 +9,7 @@ function App() {
 
 	async function sendRequest() {
 		try {
-			const req = await fetch(`${API_BASE_URL}/hello`);
+			const req = await fetch(`${API_BASE_URL}/api/hello`);
 			const res: ApiResponse = await req.json();
 			setData(res);
 		} catch (error) {
