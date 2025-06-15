@@ -76,3 +76,10 @@ img {
 	padding: 0.5rem;
 	border-radius: 5px;
 }
+
+.code-response {
+	font-family: monospace;
+	background: #232323;
+	padding: 1rem;
+	border-radius: 5px;
+}

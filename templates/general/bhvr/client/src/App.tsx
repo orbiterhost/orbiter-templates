@@ -1,21 +1,21 @@
-// import { useState } from "react";
-// import { ApiResponse } from "shared";
+import { useState } from "react";
+import type { ApiResponse } from "shared";
 import "./App.css";
 
-//const SERVER_URL = import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
+const API_BASE_URL = import.meta.env.DEV ? "http://localhost:3000" : "";
 
 function App() {
-	// const [data, setData] = useState<ApiResponse | undefined>();
+	const [data, setData] = useState<ApiResponse | undefined>();
 
-	// async function sendRequest() {
-	// 	try {
-	// 		const req = await fetch(`${SERVER_URL}/hello`);
-	// 		const res: ApiResponse = await req.json();
-	// 		setData(res);
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 	}
-	// }
+	async function sendRequest() {
+		try {
+			const req = await fetch(`${API_BASE_URL}/hello`);
+			const res: ApiResponse = await req.json();
+			setData(res);
+		} catch (error) {
+			console.log(error);
+		}
+	}
 
 	return (
 		<main>
@@ -41,6 +41,26 @@ function App() {
 					Github
 				</a>
 			</div>
+			<div className="link-container">
+				<button onClick={sendRequest} className="link" type="button">
+					Call API
+				</button>
+				<a
+					href="https://bhvr.dev"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="link secondary"
+				>
+					bhvr Docs
+				</a>
+			</div>
+
+			{data && (
+				<code className="code-response">
+					Message: {data.message} <br />
+					Success: {data.success.toString()}
+				</code>
+			)}
 		</main>
 	);
 }
