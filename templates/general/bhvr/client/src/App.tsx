@@ -2,14 +2,14 @@ import { useState } from "react";
 import type { ApiResponse } from "shared";
 import "./App.css";
 
-const API_BASE_URL = import.meta.env.DEV ? "http://localhost:3000" : "";
+const API_BASE_URL = import.meta.env.DEV ? "http://localhost:3000" : "/api";
 
 function App() {
 	const [data, setData] = useState<ApiResponse | undefined>();
 
 	async function sendRequest() {
 		try {
-			const req = await fetch(`${API_BASE_URL}/api/hello`);
+			const req = await fetch(`${API_BASE_URL}/hello`);
 			const res: ApiResponse = await req.json();
 			setData(res);
 		} catch (error) {
