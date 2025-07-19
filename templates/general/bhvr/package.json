@@ -32,7 +32,8 @@
 	],
 	"devDependencies": {
 		"bun-types": "latest",
-		"concurrently": "^9.1.2"
+		"concurrently": "^9.1.2",
+		"orbiter-cli": "latest"
 	},
 	"peerDependencies": {
 		"typescript": "^5.7.3"
